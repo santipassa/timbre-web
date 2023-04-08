@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>Tocar timbre</title>
+	<style>
+    button {
+        display: block;
+        margin: 0 auto;
+        border-radius: 20px;
+        background-color: #ff0000;
+        border: none;
+        box-shadow: 2px 2px 5px #888;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        max-width: 100%;
+        width: 200px;
+         position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease-out;
+    }
+    	button:active {
+			transform: translate(-50%, -50%) scale(0.9);
+		}
+
+    @media only screen and (max-width: 600px) {
+        button {
+            width: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+	<button onclick="tocarTimbre()">Tocar timbre</button>
+	
+	<script>
+		function tocarTimbre() {
+			var token = '6264800870:AAFUmPqkCQnmwJ1wg6gR5Iw9AtOZ7dKuKxY';
+			var chatId = '-1001923523118';
+			var mensaje = '⚠️ATENCIÓN⚠️: TIMBRE SONANDO🚨';
+
+
+			var xmlhttp = new XMLHttpRequest();
+			var url = 'https://api.telegram.org/bot' + token + '/sendMessage?chat_id=' + chatId + '&text=' + mensaje;
+			xmlhttp.open('GET', url, true);
+			xmlhttp.send();
+		}
+	</script>
+</body>
+</html>
