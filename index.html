@@ -36,14 +36,13 @@ function tocarTimbre() {
      alert('Debe esperar 10 minutos para volver a tocar timbre');
     return;
   }
-  
-  var token = '6264800870:AAFUmPqkCQnmwJ1wg6gR5Iw9AtOZ7dKuKxY';
   var chatId = '-1001923523118';
   var mensaje = '⚠️ATENCIÓN⚠️: TIMBRE SONANDO🚨';
   var xmlhttp = new XMLHttpRequest();
-  var url = 'https://api.telegram.org/bot' + token + '/sendMessage?chat_id=' + chatId + '&text=' + mensaje;
+  var url = 'https://api.telegram.org/bot6264800870:AAFUmPqkCQnmwJ1wg6gR5Iw9AtOZ7dKuKxY/sendMessage?chat_id=' + chatId + '&text=' + mensaje;
   xmlhttp.open('GET', url, true);
   xmlhttp.send();
+  alert('Espere a ser atendido. Gracias');
   
   ejecuciones++;
 
