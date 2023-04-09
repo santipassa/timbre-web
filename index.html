@@ -1,60 +1,55 @@
 <html>
-<head>
-	<title>Tocar timbre en Yaravi 497</title>
-	<style>
-    button {
+   <head>
+      <title>Tocar timbre en Yaravi 497</title>
+      <style>
+         button {
          position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: red;
-  color: white;
-  font-size: 6rem;
-  text-align: center;
-  line-height: 100vh;
-
-    }
-
-    button:active {
-  background-color: black;
-}
-
-
-</style>
-</head>
-<body>
-	<button onclick="tocarTimbre()">TOCAR TIMBRE</button>
-	
-	<script>
-		var ejecuciones = 0; // variable para contar las ejecuciones de la función
-    var bloqueado = false; // variable para indicar si la función está bloqueada
-
-function tocarTimbre() {
-  
-  if (bloqueado) {
-     alert('Debe esperar 10 minutos para volver a tocar timbre');
-    return;
-  }
-  var chatId = '-1001923523118';
-  var mensaje = '⚠️ATENCIÓN⚠️: TIMBRE SONANDO🚨';
-  var xmlhttp = new XMLHttpRequest();
-  var url = 'https://api.telegram.org/bot6264800870:AAFUmPqkCQnmwJ1wg6gR5Iw9AtOZ7dKuKxY/sendMessage?chat_id=' + chatId + '&text=' + mensaje;
-  xmlhttp.open('GET', url, true);
-  xmlhttp.send();
-  alert('Espere a ser atendido. Gracias');
-  
-  ejecuciones++;
-
-  if (ejecuciones === 5) {
-    bloqueado = true;
-    setTimeout(function() {
-      ejecuciones = 0; 
-      bloqueado = false;
-    }, 600000); 
-    alert('Debe esperar 10 minutos para volver a tocar timbre');
-  }
-}
-	</script>
-</body>
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: red;
+         color: white;
+         font-size: 6rem;
+         text-align: center;
+         line-height: 100vh;
+         }
+         button:active {
+         background-color: black;
+         }
+      </style>
+   </head>
+   <body>
+      <button onclick="tocarTimbre()">TOCAR TIMBRE</button>
+      <script>
+         var ejecuciones = 0; // variable para contar las ejecuciones de la función
+           var bloqueado = false; // variable para indicar si la función está bloqueada
+         
+         function tocarTimbre() {
+         
+         if (bloqueado) {
+            alert('Debe esperar 10 minutos para volver a tocar timbre.');
+           return;
+         }
+         var chatId = '-1001923523118';
+         var mensaje = '⚠️ATENCIÓN⚠️: TIMBRE SONANDO🚨';
+         var xmlhttp = new XMLHttpRequest();
+         var url = 'https://api.telegram.org/bot6264800870:AAFUmPqkCQnmwJ1wg6gR5Iw9AtOZ7dKuKxY/sendMessage?chat_id=' + chatId + '&text=' + mensaje;
+         xmlhttp.open('GET', url, true);
+         xmlhttp.send();
+         alert('Espere a ser atendido. Gracias.');
+         
+         ejecuciones++;
+         
+         if (ejecuciones === 5) {
+           bloqueado = true;
+           setTimeout(function() {
+             ejecuciones = 0; 
+             bloqueado = false;
+           }, 600000); 
+           alert('Debe esperar 10 minutos para volver a tocar timbre.');
+         }
+         }
+      </script>
+   </body>
 </html>
