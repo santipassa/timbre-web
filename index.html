@@ -22,34 +22,39 @@
    <body>
       <button onclick="tocarTimbre()">TOCAR TIMBRE</button>
       <script>
-         var ejecuciones = 0; // variable para contar las ejecuciones de la función
-           var bloqueado = false; // variable para indicar si la función está bloqueada
-         
-         function tocarTimbre() {
-         
-         if (bloqueado) {
-            alert('Debe esperar 10 minutos para volver a tocar timbre.');
-           return;
-         }
-         var chatId = '-1001923523118';
-         var mensaje = '⚠️ATENCIÓN⚠️: TIMBRE SONANDO🚨';
-         var xmlhttp = new XMLHttpRequest();
-         var url = 'https://api.telegram.org/bot6264800870:AAFUmPqkCQnmwJ1wg6gR5Iw9AtOZ7dKuKxY/sendMessage?chat_id=' + chatId + '&text=' + mensaje;
-         xmlhttp.open('GET', url, true);
-         xmlhttp.send();
-         alert('Espere a ser atendido. Gracias.');
-         
-         ejecuciones++;
-         
-         if (ejecuciones === 5) {
-           bloqueado = true;
-           setTimeout(function() {
-             ejecuciones = 0; 
-             bloqueado = false;
-           }, 600000); 
-           alert('Debe esperar 10 minutos para volver a tocar timbre.');
-         }
-         }
+var ejecuciones = localStorage.getItem('ejecuciones') || 0; // Obtener el valor de localStorage o establecerlo en 0 si no existe
+var bloqueado = localStorage.getItem('bloqueado') === 'true' || false; // Obtener el valor de localStorage o establecerlo en false si no existe
+
+function tocarTimbre() {
+  if (bloqueado) {
+    alert('Debe esperar 10 minutos para volver a tocar el timbre.');
+    return;
+  }
+
+  var chatId = '-1001923523118';
+  var mensaje = '⚠️ATENCIÓN⚠️: TIMBRE SONANDO🚨';
+  var xmlhttp = new XMLHttpRequest();
+  var url = 'https://api.telegram.org/bot6264800870:AAFUmPqkCQnmwJ1wg6gR5Iw9AtOZ7dKuKxY/sendMessage?chat_id=' + chatId + '&text=' + mensaje;
+  xmlhttp.open('GET', url, true);
+  xmlhttp.send();
+  alert('Espere a ser atendido. Gracias.');
+
+  ejecuciones++;
+
+  if (ejecuciones === 5) {
+    bloqueado = true;
+    localStorage.setItem('bloqueado', bloqueado); // Guardar en localStorage
+    setTimeout(function () {
+      ejecuciones = 0;
+      bloqueado = false;
+      localStorage.setItem('bloqueado', bloqueado); // Guardar en localStorage
+    }, 600000);
+    alert('Debe esperar 10 minutos para volver a tocar el timbre.');
+  }
+
+  localStorage.setItem('ejecuciones', ejecuciones); // Guardar en localStorage
+}
+
       </script>
    </body>
 </html>
